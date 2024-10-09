@@ -22,6 +22,9 @@ dependencyResolutionManagement {
         maven("https://us-maven.pkg.dev/moonsworth-299m4oir/maven-public")
         mavenCentral()
         mavenLocal()
+        flatDir {
+            dirs("../helosion.java/resources")
+        }
     }
 }
 
