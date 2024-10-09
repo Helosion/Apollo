@@ -23,8 +23,6 @@
  */
 package com.lunarclient.apollo;
 
-import com.lunarclient.apollo.command.impl.ApolloCommand;
-import com.lunarclient.apollo.command.impl.LunarClientCommand;
 import com.lunarclient.apollo.listener.ApolloPlayerListener;
 import com.lunarclient.apollo.loader.PlatformPlugin;
 import com.lunarclient.apollo.module.ApolloModuleManagerImpl;
@@ -135,8 +133,6 @@ public final class ApolloBungeePlatform implements PlatformPlugin, ApolloPlatfor
 
         PluginManager pluginManager = server.getPluginManager();
         pluginManager.registerListener(this.plugin, new ApolloPlayerListener());
-        pluginManager.registerCommand(this.plugin, ApolloCommand.create());
-        pluginManager.registerCommand(this.plugin, LunarClientCommand.create());
     }
 
     @Override

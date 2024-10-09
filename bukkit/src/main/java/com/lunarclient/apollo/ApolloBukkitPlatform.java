@@ -23,8 +23,6 @@
  */
 package com.lunarclient.apollo;
 
-import com.lunarclient.apollo.command.impl.ApolloCommand;
-import com.lunarclient.apollo.command.impl.LunarClientCommand;
 import com.lunarclient.apollo.listener.ApolloPlayerListener;
 import com.lunarclient.apollo.listener.ApolloWorldListener;
 import com.lunarclient.apollo.loader.PlatformPlugin;
@@ -154,9 +152,6 @@ public final class ApolloBukkitPlatform implements PlatformPlugin, ApolloPlatfor
         messenger.registerIncomingPluginChannel(this.plugin, ApolloManager.PLUGIN_MESSAGE_CHANNEL,
             (channel, player, bytes) -> ApolloManager.getNetworkManager().receivePacket(player.getUniqueId(), bytes)
         );
-
-        this.plugin.getCommand("apollo").setExecutor(new ApolloCommand());
-        this.plugin.getCommand("lunarclient").setExecutor(new LunarClientCommand());
 
         if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null) {
             this.getPlatformLogger().log(Level.WARNING, "Please remove the legacy API to prevent compatibility issues with Apollo!");
