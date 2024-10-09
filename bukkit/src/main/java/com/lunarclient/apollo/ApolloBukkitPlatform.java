@@ -78,8 +78,6 @@ import com.lunarclient.apollo.module.waypoint.WaypointModule;
 import com.lunarclient.apollo.module.waypoint.WaypointModuleImpl;
 import com.lunarclient.apollo.option.Options;
 import com.lunarclient.apollo.option.OptionsImpl;
-import com.lunarclient.apollo.stats.ApolloStats;
-import com.lunarclient.apollo.wrapper.BukkitApolloStats;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.Getter;
@@ -103,14 +101,12 @@ public final class ApolloBukkitPlatform implements PlatformPlugin, ApolloPlatfor
     @Getter private final JavaPlugin plugin;
 
     @Getter private BukkitAudiences audiences;
-    private ApolloStats stats;
 
     @Override
     public void onEnable() {
         ApolloBukkitPlatform.instance = this;
 
         this.audiences = BukkitAudiences.create(this.plugin);
-        this.stats = new BukkitApolloStats();
 
         ApolloManager.bootstrap(this);
 
@@ -162,7 +158,6 @@ public final class ApolloBukkitPlatform implements PlatformPlugin, ApolloPlatfor
         this.plugin.getCommand("apollo").setExecutor(new ApolloCommand());
         this.plugin.getCommand("lunarclient").setExecutor(new LunarClientCommand());
 
-        ApolloManager.getStatsManager().enable();
         ApolloManager.getVersionManager().checkForUpdates();
 
         if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null) {
@@ -183,11 +178,6 @@ public final class ApolloBukkitPlatform implements PlatformPlugin, ApolloPlatfor
     @Override
     public String getApolloVersion() {
         return this.plugin.getDescription().getVersion();
-    }
-
-    @Override
-    public ApolloStats getStats() {
-        return this.stats;
     }
 
     @Override

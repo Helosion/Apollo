@@ -23,9 +23,6 @@
  */
 package com.lunarclient.apollo;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.lunarclient.apollo.api.ApolloHttpManager;
 import com.lunarclient.apollo.module.ApolloModuleManagerImpl;
 import com.lunarclient.apollo.network.ApolloNetworkManager;
 import com.lunarclient.apollo.option.ConfigOptions;
@@ -33,7 +30,6 @@ import com.lunarclient.apollo.option.Option;
 import com.lunarclient.apollo.option.config.CommonSerializers;
 import com.lunarclient.apollo.player.ApolloPlayerManagerImpl;
 import com.lunarclient.apollo.roundtrip.ApolloRoundtripManager;
-import com.lunarclient.apollo.stats.ApolloStatsManager;
 import com.lunarclient.apollo.util.ConfigTarget;
 import com.lunarclient.apollo.version.ApolloVersionManager;
 import com.lunarclient.apollo.world.ApolloWorldManagerImpl;
@@ -60,20 +56,13 @@ public final class ApolloManager {
      */
     public static final String PLUGIN_ROOT_MODULE = "apollo";
 
-    /**
-     * The plugins GSON used for http.
-     */
-    public static final Gson GSON = new GsonBuilder().create();
-
     private static final List<Option<?, ?, ?>> optionKeys = new LinkedList<>();
 
     private static ApolloPlatform platform;
 
     @Getter private static ApolloRoundtripManager roundtripManager;
-    @Getter private static ApolloHttpManager httpManager;
     @Getter private static ApolloNetworkManager networkManager;
     @Getter private static ApolloVersionManager versionManager;
-    @Getter private static ApolloStatsManager statsManager;
 
     @Getter private static Path configPath;
 
@@ -99,10 +88,8 @@ public final class ApolloManager {
             );
 
             ApolloManager.roundtripManager = new ApolloRoundtripManager();
-            ApolloManager.httpManager = new ApolloHttpManager();
             ApolloManager.networkManager = new ApolloNetworkManager();
             ApolloManager.versionManager = new ApolloVersionManager();
-            ApolloManager.statsManager = new ApolloStatsManager();
 
             new CommonSerializers();
 

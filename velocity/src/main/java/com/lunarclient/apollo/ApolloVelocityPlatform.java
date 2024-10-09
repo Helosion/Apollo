@@ -67,8 +67,6 @@ import com.lunarclient.apollo.module.waypoint.WaypointModule;
 import com.lunarclient.apollo.module.waypoint.WaypointModuleImpl;
 import com.lunarclient.apollo.option.Options;
 import com.lunarclient.apollo.option.OptionsImpl;
-import com.lunarclient.apollo.stats.ApolloStats;
-import com.lunarclient.apollo.wrapper.VelocityApolloStats;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
@@ -105,7 +103,6 @@ public final class ApolloVelocityPlatform implements ApolloPlatform {
     @Getter private static ApolloVelocityPlatform instance;
 
     private final Options options = new OptionsImpl(null);
-    private ApolloStats stats;
 
     private final ProxyServer server;
     private final Logger logger;
@@ -139,11 +136,6 @@ public final class ApolloVelocityPlatform implements ApolloPlatform {
     }
 
     @Override
-    public ApolloStats getStats() {
-        return this.stats;
-    }
-
-    @Override
     public Object getPlugin() {
         return getInstance();
     }
@@ -157,7 +149,6 @@ public final class ApolloVelocityPlatform implements ApolloPlatform {
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
         ApolloVelocityPlatform.instance = this;
-        this.stats = new VelocityApolloStats();
         ApolloManager.bootstrap(this);
 
         ((ApolloModuleManagerImpl) Apollo.getModuleManager())
@@ -198,7 +189,6 @@ public final class ApolloVelocityPlatform implements ApolloPlatform {
         commandManager.register(ApolloCommand.create());
         commandManager.register(LunarClientCommand.create());
 
-        ApolloManager.getStatsManager().enable();
         ApolloManager.getVersionManager().checkForUpdates();
     }
 

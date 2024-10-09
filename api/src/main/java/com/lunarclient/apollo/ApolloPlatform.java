@@ -24,7 +24,6 @@
 package com.lunarclient.apollo;
 
 import com.lunarclient.apollo.option.Options;
-import com.lunarclient.apollo.stats.ApolloStats;
 import java.util.logging.Logger;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -67,14 +66,6 @@ public interface ApolloPlatform {
      * @since 1.0.0
      */
     Logger getPlatformLogger();
-
-    /**
-     * Returns the platform stats.
-     *
-     * @return the platform stats
-     * @since 1.0.0
-     */
-    ApolloStats getStats();
 
     /**
      * Returns the platform plugin class.

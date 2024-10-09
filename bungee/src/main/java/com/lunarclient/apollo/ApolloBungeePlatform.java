@@ -67,8 +67,6 @@ import com.lunarclient.apollo.module.waypoint.WaypointModule;
 import com.lunarclient.apollo.module.waypoint.WaypointModuleImpl;
 import com.lunarclient.apollo.option.Options;
 import com.lunarclient.apollo.option.OptionsImpl;
-import com.lunarclient.apollo.stats.ApolloStats;
-import com.lunarclient.apollo.wrapper.BungeeApolloStats;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.Getter;
@@ -92,14 +90,12 @@ public final class ApolloBungeePlatform implements PlatformPlugin, ApolloPlatfor
     @Getter private final Plugin plugin;
 
     @Getter private BungeeAudiences audiences;
-    private ApolloStats stats;
 
     @Override
     public void onEnable() {
         ApolloBungeePlatform.instance = this;
 
         this.audiences = BungeeAudiences.create(this.plugin);
-        this.stats = new BungeeApolloStats();
 
         ApolloManager.bootstrap(this);
 
@@ -142,7 +138,6 @@ public final class ApolloBungeePlatform implements PlatformPlugin, ApolloPlatfor
         pluginManager.registerCommand(this.plugin, ApolloCommand.create());
         pluginManager.registerCommand(this.plugin, LunarClientCommand.create());
 
-        ApolloManager.getStatsManager().enable();
         ApolloManager.getVersionManager().checkForUpdates();
     }
 
@@ -164,11 +159,6 @@ public final class ApolloBungeePlatform implements PlatformPlugin, ApolloPlatfor
     @Override
     public Logger getPlatformLogger() {
         return ProxyServer.getInstance().getLogger();
-    }
-
-    @Override
-    public ApolloStats getStats() {
-        return this.stats;
     }
 
 }
