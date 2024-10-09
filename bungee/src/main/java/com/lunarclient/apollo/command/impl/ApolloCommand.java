@@ -63,10 +63,6 @@ public final class ApolloCommand extends BungeeApolloCommand<CommandSender> {
         } else if(args[0].equalsIgnoreCase("reload")) {
             this.reloadConfiguration(sender);
         } else if(args[0].equalsIgnoreCase("update")) {
-            ApolloManager.getVersionManager().forceUpdate(
-                "bungee",
-                message -> this.textConsumer.accept(sender, message)
-            );
         }
     }
 

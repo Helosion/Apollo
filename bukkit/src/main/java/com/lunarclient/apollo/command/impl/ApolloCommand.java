@@ -53,10 +53,6 @@ public final class ApolloCommand extends BukkitApolloCommand<CommandSender> impl
         } else if(args[0].equalsIgnoreCase("reload")) {
             this.reloadConfiguration(sender);
         } else if(args[0].equalsIgnoreCase("update")) {
-            ApolloManager.getVersionManager().forceUpdate(
-                "bukkit",
-                message -> this.textConsumer.accept(sender, message)
-            );
         }
 
         return true;

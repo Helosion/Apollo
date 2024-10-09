@@ -137,8 +137,6 @@ public final class ApolloBungeePlatform implements PlatformPlugin, ApolloPlatfor
         pluginManager.registerListener(this.plugin, new ApolloPlayerListener());
         pluginManager.registerCommand(this.plugin, ApolloCommand.create());
         pluginManager.registerCommand(this.plugin, LunarClientCommand.create());
-
-        ApolloManager.getVersionManager().checkForUpdates();
     }
 
     @Override

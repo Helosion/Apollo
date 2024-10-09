@@ -158,8 +158,6 @@ public final class ApolloBukkitPlatform implements PlatformPlugin, ApolloPlatfor
         this.plugin.getCommand("apollo").setExecutor(new ApolloCommand());
         this.plugin.getCommand("lunarclient").setExecutor(new LunarClientCommand());
 
-        ApolloManager.getVersionManager().checkForUpdates();
-
         if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null) {
             this.getPlatformLogger().log(Level.WARNING, "Please remove the legacy API to prevent compatibility issues with Apollo!");
         }

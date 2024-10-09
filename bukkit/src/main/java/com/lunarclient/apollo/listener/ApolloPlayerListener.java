@@ -31,14 +31,10 @@ import com.lunarclient.apollo.event.EventBus;
 import com.lunarclient.apollo.event.Listen;
 import com.lunarclient.apollo.player.ApolloPlayerManagerImpl;
 import com.lunarclient.apollo.player.v1.PlayerHandshakeMessage;
-import com.lunarclient.apollo.version.ApolloVersionManager;
 import com.lunarclient.apollo.wrapper.BukkitApolloPlayer;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRegisterChannelEvent;
 import org.bukkit.event.player.PlayerUnregisterChannelEvent;
@@ -83,18 +79,6 @@ public final class ApolloPlayerListener implements Listener, ApolloListener {
     @EventHandler
     private void onPlayerQuit(PlayerQuitEvent event) {
         ((ApolloPlayerManagerImpl) Apollo.getPlayerManager()).removePlayer(event.getPlayer().getUniqueId());
-    }
-
-    @EventHandler
-    private void onPlayerJoin(PlayerJoinEvent event) {
-        if (!ApolloVersionManager.NEEDS_UPDATE) {
-            return;
-        }
-
-        Player player = event.getPlayer();
-        if (player.isOp()) {
-            player.sendMessage(ChatColor.YELLOW + ApolloVersionManager.UPDATE_MESSAGE);
-        }
     }
 
     @Listen

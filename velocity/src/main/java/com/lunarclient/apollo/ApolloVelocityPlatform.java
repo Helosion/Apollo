@@ -188,8 +188,6 @@ public final class ApolloVelocityPlatform implements ApolloPlatform {
         CommandManager commandManager = this.server.getCommandManager();
         commandManager.register(ApolloCommand.create());
         commandManager.register(LunarClientCommand.create());
-
-        ApolloManager.getVersionManager().checkForUpdates();
     }
 
     /**
