@@ -35,13 +35,9 @@ val loadAllVersions = mcVersion == null
 
 listOfNotNull(
     "extra:loader",
-    "extra:adventure4",
     "api",
     "common",
     "bukkit",
-    "bukkit-example",
-    if (loadAllVersions) "bungee" else null,
-    if (loadAllVersions) "velocity" else null
 ).forEach {
     include(it)
     findProject(":$it")?.name = "apollo-${it.replace(':', '-')}"

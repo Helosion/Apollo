@@ -30,7 +30,6 @@ import com.lunarclient.apollo.recipients.Recipients;
 import com.lunarclient.apollo.world.ApolloWorld;
 import java.util.Optional;
 import java.util.UUID;
-import net.kyori.adventure.audience.ForwardingAudience;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -39,71 +38,69 @@ import org.jetbrains.annotations.ApiStatus;
  * @since 1.0.0
  */
 @ApiStatus.NonExtendable
-public interface ApolloPlayer extends Recipients, ForwardingAudience.Single {
+public interface ApolloPlayer extends Recipients {
 
-    /**
-     * Gets the players unique identifier.
-     *
-     * @return the players unique identifier
-     * @since 1.0.0
-     */
-    UUID getUniqueId();
+  /**
+   * Gets the players unique identifier.
+   *
+   * @return the players unique identifier
+   * @since 1.0.0
+   */
+  UUID getUniqueId();
 
-    /**
-     * Gets the players name.
-     *
-     * @return the players name
-     * @since 1.0.0
-     */
-    String getName();
+  /**
+   * Gets the players name.
+   *
+   * @return the players name
+   * @since 1.0.0
+   */
+  String getName();
 
-    /**
-     * Gets the players current world.
-     *
-     * @return the players current world
-     * @since 1.0.0
-     */
-    Optional<ApolloWorld> getWorld();
+  /**
+   * Gets the players current world.
+   *
+   * @return the players current world
+   * @since 1.0.0
+   */
+  Optional<ApolloWorld> getWorld();
 
-    /**
-     * Gets the players current location.
-     *
-     * @return the players current location
-     * @since 1.0.0
-     */
-    Optional<ApolloLocation> getLocation();
+  /**
+   * Gets the players current location.
+   *
+   * @return the players current location
+   * @since 1.0.0
+   */
+  Optional<ApolloLocation> getLocation();
 
-    /**
-     * Returns {@code true} if the player has the specified {@link String}
-     * permission from the provided {@link Option}, otherwise returns
-     * {@code false}.
-     *
-     * @param options the options container
-     * @param option  the option
-     * @return true if the player has permission, otherwise false
-     * @since 1.0.0
-     */
-    default boolean hasPermission(Options options, Option<String, ?, ?> option) {
-        String value = options.get(option);
-        return this.hasPermission(value);
-    }
+  /**
+   * Returns {@code true} if the player has the specified {@link String} permission from the
+   * provided {@link Option}, otherwise returns {@code false}.
+   *
+   * @param options the options container
+   * @param option the option
+   * @return true if the player has permission, otherwise false
+   * @since 1.0.0
+   */
+  default boolean hasPermission(Options options, Option<String, ?, ?> option) {
+    String value = options.get(option);
+    return this.hasPermission(value);
+  }
 
-    /**
-     * Returns {@code true} if the player has the specified {@link String}
-     * permission, otherwise returns {@code false}.
-     *
-     * @param permissionNode the permission node
-     * @return true if the player has permission, otherwise false
-     * @since 1.0.0
-     */
-    boolean hasPermission(String permissionNode);
+  /**
+   * Returns {@code true} if the player has the specified {@link String} permission, otherwise
+   * returns {@code false}.
+   *
+   * @param permissionNode the permission node
+   * @return true if the player has permission, otherwise false
+   * @since 1.0.0
+   */
+  boolean hasPermission(String permissionNode);
 
-    /**
-     * Returns the player object associated with the platform.
-     *
-     * @return the associated player object
-     * @since 1.0.9
-     */
-    Object getPlayer();
-
+  /**
+   * Returns the player object associated with the platform.
+   *
+   * @return the associated player object
+   * @since 1.0.9
+   */
+  Object getPlayer();
 }

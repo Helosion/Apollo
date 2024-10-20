@@ -33,28 +33,18 @@ import java.util.List;
  */
 public final class DynamicDependencies {
 
-    /**
-     * Returns an array of dependency resource paths to be loaded dynamically.
-     *
-     * @return an array of dynamic dependencies
-     * @since 1.0.0
-     */
-    public static String[] discoverDependencies() {
-        List<String> resources = new ArrayList<>();
-        resources.add("platform/libs.jarinjar");
+  /**
+   * Returns an array of dependency resource paths to be loaded dynamically.
+   *
+   * @return an array of dynamic dependencies
+   * @since 1.0.0
+   */
+  public static String[] discoverDependencies() {
+    List<String> resources = new ArrayList<>();
+    resources.add("platform/libs.jarinjar");
 
-        try {
-            Class.forName("net.kyori.adventure.Adventure");
-        } catch(Exception ignored) {
-            resources.add("adventure/4/dependencies.jarinjar");
-        }
+    return resources.toArray(new String[0]);
+  }
 
-        resources.add("adventure/4/libs.jarinjar");
-
-        return resources.toArray(new String[0]);
-    }
-
-    private DynamicDependencies() {
-    }
-
+  private DynamicDependencies() {}
 }

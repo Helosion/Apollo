@@ -34,11 +34,9 @@ import java.util.Optional;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.kyori.adventure.audience.Audience;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The Bukkit implementation of {@link ApolloPlayer}.
@@ -49,49 +47,48 @@ import org.jetbrains.annotations.NotNull;
 @RequiredArgsConstructor
 public final class BukkitApolloPlayer extends AbstractApolloPlayer {
 
-    private final Player player;
+  private final Player player;
 
-    @Override
-    public UUID getUniqueId() {
-        return this.player.getUniqueId();
-    }
+  @Override
+  public UUID getUniqueId() {
+    return this.player.getUniqueId();
+  }
 
-    @Override
-    public String getName() {
-        return this.player.getName();
-    }
+  @Override
+  public String getName() {
+    return this.player.getName();
+  }
 
-    @Override
-    public Optional<ApolloWorld> getWorld() {
-        World world = this.player.getWorld();
+  @Override
+  public Optional<ApolloWorld> getWorld() {
+    World world = this.player.getWorld();
 
-        return Apollo.getWorldManager().getWorld(world.getName());
-    }
+    return Apollo.getWorldManager().getWorld(world.getName());
+  }
 
-    @Override
-    public Optional<ApolloLocation> getLocation() {
-        Location location = this.player.getLocation();
+  @Override
+  public Optional<ApolloLocation> getLocation() {
+    Location location = this.player.getLocation();
 
-        return Optional.of(ApolloLocation.builder()
+    return Optional.of(
+        ApolloLocation.builder()
             .world(location.getWorld().getName())
             .x(location.getX())
             .y(location.getY())
             .z(location.getZ())
             .build());
-    }
+  }
 
-    @Override
-    public boolean hasPermission(String permissionNode) {
-        return this.player.hasPermission(permissionNode);
-    }
+  @Override
+  public boolean hasPermission(String permissionNode) {
+    return this.player.hasPermission(permissionNode);
+  }
 
-    @Override
-    public void sendPacket(byte[] messages) {
-        this.player.sendPluginMessage(ApolloBukkitPlatform.getInstance().getPlugin(), ApolloManager.PLUGIN_MESSAGE_CHANNEL, messages);
-    }
-
-    @Override
-    public @NotNull Audience audience() {
-        return ApolloBukkitPlatform.getInstance().getAudiences().player(this.player);
-    }
+  @Override
+  public void sendPacket(byte[] messages) {
+    this.player.sendPluginMessage(
+        ApolloBukkitPlatform.getInstance().getPlugin(),
+        ApolloManager.PLUGIN_MESSAGE_CHANNEL,
+        messages);
+  }
 }

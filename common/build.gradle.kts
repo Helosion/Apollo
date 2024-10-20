@@ -4,8 +4,6 @@ plugins {
 }
 
 dependencies {
-    compileOnly(project(":extra:apollo-extra-adventure4"))
-
     api(project(path = ":apollo-api", configuration = "shadow"))
 
     api(libs.protobuf)

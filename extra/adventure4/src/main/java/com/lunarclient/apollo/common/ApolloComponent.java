@@ -24,9 +24,6 @@
 package com.lunarclient.apollo.common;
 
 import lombok.NonNull;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 /**
  * Represents a component which can be shown on the client.
@@ -35,40 +32,38 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
  */
 public final class ApolloComponent {
 
-    /**
-     * Returns a new component from the provided JSON {@link String}.
-     *
-     * @param json the json string for this component
-     * @return the component from the json string
-     * @since 1.0.0
-     */
-    public static Component fromJson(@NonNull String json) {
-        return GsonComponentSerializer.gson().deserializeOrNull(json);
-    }
+  /**
+   * Returns a new component from the provided JSON {@link String}.
+   *
+   * @param json the json string for this component
+   * @return the component from the json string
+   * @since 1.0.0
+   */
+  public static Component fromJson(@NonNull String json) {
+    return GsonComponentSerializer.gson().deserializeOrNull(json);
+  }
 
-    /**
-     * Returns this component as a JSON {@link String}.
-     *
-     * @param component the component to make into a json string
-     * @return the json string for this component
-     * @since 1.0.0
-     */
-    public static String toJson(@NonNull Component component) {
-        return GsonComponentSerializer.gson().serialize(component);
-    }
+  /**
+   * Returns this component as a JSON {@link String}.
+   *
+   * @param component the component to make into a json string
+   * @return the json string for this component
+   * @since 1.0.0
+   */
+  public static String toJson(@NonNull Component component) {
+    return GsonComponentSerializer.gson().serialize(component);
+  }
 
-    /**
-     * Returns this component as a legacy {@link String}.
-     *
-     * @param component the component to make into a legacy string
-     * @return the legacy string for this component
-     * @since 1.0.5
-     */
-    public static String toLegacy(@NonNull Component component) {
-        return LegacyComponentSerializer.legacySection().serialize(component);
-    }
+  /**
+   * Returns this component as a legacy {@link String}.
+   *
+   * @param component the component to make into a legacy string
+   * @return the legacy string for this component
+   * @since 1.0.5
+   */
+  public static String toLegacy(@NonNull Component component) {
+    return LegacyComponentSerializer.legacySection().serialize(component);
+  }
 
-    private ApolloComponent() {
-    }
-
+  private ApolloComponent() {}
 }

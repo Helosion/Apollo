@@ -8,8 +8,6 @@ setupAdventureProject()
 dependencies {
     api(libs.bundles.adventure) {
         exclude("org.checkerframework")
-        exclude("net.kyori", "adventure-api")
-        exclude("net.kyori", "adventure-bom")
     }
 }
 

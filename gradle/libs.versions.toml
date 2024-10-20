@@ -20,14 +20,6 @@ velocity = "3.0.1"
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 
-# adventure
-adventure-api = { module = "net.kyori:adventure-api", version.ref = "adventure" }
-adventure-platform-bukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventurePlatform" }
-adventure-platform-bungee = { module = "net.kyori:adventure-platform-bungeecord", version.ref = "adventurePlatform" }
-adventure-textserializergson = { module = "net.kyori:adventure-text-serializer-gson", version.ref = "adventure" }
-adventure-textserializergson-legacy = { module = "net.kyori:adventure-text-serializer-gson-legacy-impl", version.ref = "adventure" }
-adventure-textserializer-legacy = { module = "net.kyori:adventure-text-serializer-legacy", version.ref = "adventure" }
-
 # api
 geantyref = { module = "io.leangen.geantyref:geantyref", version.ref = "geantyref" }
 
@@ -40,12 +32,6 @@ configurate-yaml = { module = "org.spongepowered:configurate-yaml", version.ref 
 bukkit-api = { module = "org.spigotmc:spigot-api", version.ref = "bukkit" }
 bukkit = { module = "org.spigotmc:spigot", version.ref = "bukkit" }
 
-# bungee
-bungee = { module = "net.md-5:bungeecord-api", version.ref = "bungee" }
-
-# velocity
-velocity = { module = "com.velocitypowered:velocity-api", version.ref = "velocity" }
-
 # build
 artifactregistry = { module = "gradle.plugin.com.google.cloud.artifactregistry:artifactregistry-gradle-plugin", version.ref = "artifactregistry" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
@@ -53,7 +39,3 @@ shadow = { module = "com.github.johnrengelman:shadow", version.ref = "shadow" }
 idea = { module = "gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext", version.ref = "idea" }
 
 stylecheck = "ca.stellardrift:stylecheck:0.1"
-
-[bundles]
-
-adventure = ["adventure-api", "adventure-textserializergson", "adventure-textserializergson-legacy", "adventure-textserializer-legacy"]
